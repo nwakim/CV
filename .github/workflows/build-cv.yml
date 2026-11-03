@@ -1,6 +1,7 @@
 name: Build CV PDF
 
-# Rebuild cv.pdf whenever the CV source changes, then commit it back.
+# Rebuild the CV whenever its source changes and commit it back as
+# cv/NWakim_CV_YYYY-MM-DD.pdf (one file per day; same-day rebuilds overwrite it).
 on:
   push:
     branches: [main]
@@ -42,17 +43,27 @@ jobs:
       - name: Install R packages
         run: Rscript -e 'install.packages("rmarkdown")'
 
-      - name: Render cv.pdf
+      - name: Render CV
         run: Rscript -e 'rmarkdown::render("cv.Rmd")'
 
-      - name: Commit updated cv.pdf
+      - name: Save as cv/NWakim_CV_YYYY-MM-DD.pdf
         run: |
-          if git diff --quiet -- cv.pdf; then
-            echo "cv.pdf unchanged"
+          # Pacific-time date, matching the date in the CV footer.
+          name="NWakim_CV_$(TZ=America/Los_Angeles date +%F).pdf"
+          mkdir -p cv
+          mv cv.pdf "cv/$name"
+          # Point the README's download link at the newest version.
+          sed -i -E "s#\]\((cv\.pdf|cv/NWakim_CV_[0-9-]+\.pdf)\)#](cv/$name)#" README.md
+          echo "CV_NAME=$name" >> "$GITHUB_ENV"
+
+      - name: Commit updated CV
+        run: |
+          if [ -z "$(git status --porcelain -- cv README.md)" ]; then
+            echo "CV unchanged"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cv.pdf
-          git commit -m "Rebuild cv.pdf"
+          git add cv README.md
+          git commit -m "Add $CV_NAME"
           git push

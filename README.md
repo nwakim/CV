@@ -1,8 +1,8 @@
 # Nicole (Nicky) I. Wakim — CV
 
-📄 **[Download the latest CV (PDF)](cv.pdf)**
+📄 **[Download the latest CV (PDF)](cv/NWakim_CV_2026-11-02.pdf)** · [All versions](cv/)
 
-`cv.pdf` is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
+The CV PDF is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. Each build is saved in the `cv/` folder as `NWakim_CV_YYYY-MM-DD.pdf` (Pacific-time date), so older versions are kept; rebuilding more than once on the same day replaces that day's file, and the link above always points to the newest one. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
 
 Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in individual section files with `\input`, so sections can be mixed and matched into different CV/resume variants.
 
@@ -11,7 +11,8 @@ Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in i
 ## What's in this folder
 
 ```
-cv.Rmd                   ← main CV (knit to produce cv.pdf) — pulls in every section via \input
+cv/                      ← built CV PDFs, one per date: NWakim_CV_YYYY-MM-DD.pdf
+cv.Rmd                   ← main CV — pulls in every section via \input
 resume_short_example.Rmd ← example of a trimmed-down variant (Education, Experience, Teaching only)
 preamble.tex             ← LaTeX styling (fonts, icons, section rule, two-column row commands, footer)
 fonts/                   ← Roboto + FontAwesome font files
@@ -40,7 +41,7 @@ README.md                ← this file
    tinytex::install_tinytex()   # if you don't already have a LaTeX distribution
    ```
 3. Open `cv.Rmd` in RStudio and click **Knit** (or run `rmarkdown::render("cv.Rmd")`).
-4. A `cv.pdf` will be created in the same folder.
+4. A `cv.pdf` will be created in the same folder. This local copy is ignored by git; the dated PDFs in `cv/` are made by GitHub Actions when you push.
 
 Keep `cv.Rmd`, `preamble.tex`, the `cv_contents/` folder, and `fonts/` together — the styling, sections, and fonts won't load correctly if they're separated.
 
