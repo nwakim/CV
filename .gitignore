@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+__MACOSX/
+._*
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+*_cache/
+*_files/
+
+# LaTeX / knitr intermediates
+*.tex.bak
+*.log
+*.aux
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+cv.tex
+resume_short_example.tex

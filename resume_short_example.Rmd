@@ -1,0 +1,38 @@
+---
+title: ""
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false
+    includes:
+      in_header: preamble.tex
+geometry: "left=2.3cm,right=2.3cm,top=2cm,bottom=2cm,footskip=0.6cm"
+fontsize: 11pt
+---
+
+```{=latex}
+\begingroup
+\centering
+{\Huge Nicole (Nicky) I. \textbf{Wakim}}\\[3.2pt]
+{\large Assistant Professor of Biostatistics \enskip $\cdot$ \enskip Oregon Health \& Science University}\\[1.6pt]
+{\normalsize\itshape 1810 SW 5th Ave, Office 622A, Portland, OR 97201}\\[3.2pt]
+{\normalsize
+  \href{mailto:wakim@ohsu.edu}{\faEnvelope\ wakim@ohsu.edu}
+  \quad\textbar\quad
+  \href{https://nwakim.github.io}{\faHome\ nwakim.github.io}
+  \quad\textbar\quad
+  \href{https://linkedin.com/in/nwakim}{\faLinkedin\ nwakim}
+}\\[8pt]
+\endgroup
+
+\vspace{1.6mm}
+
+% -------------------------------------------------------------------------
+% EXAMPLE: a shorter resume variant that only pulls in a few sections --
+% this is the same trick your original resume_*.tex files used: point
+% \input at whichever cv/*.tex files you want for this particular version.
+% -------------------------------------------------------------------------
+\input{cv/education.tex}
+\input{cv/Academic_positions.tex}
+\input{cv/Teaching_experience.tex}
+```

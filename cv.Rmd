@@ -1,0 +1,47 @@
+---
+title: ""
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false
+    includes:
+      in_header: preamble.tex
+geometry: "left=2.3cm,right=2.3cm,top=2cm,bottom=2cm,footskip=0.6cm"
+fontsize: 11pt
+---
+
+```{=latex}
+\begingroup
+\centering
+{\Huge Nicole (Nicky) I. \textbf{Wakim}}\\[3.2pt]
+{\large Assistant Professor of Biostatistics \enskip $\cdot$ \enskip Oregon Health \& Science University}\\[1.6pt]
+{\normalsize\itshape 1810 SW 5th Ave, Portland, OR 97201}\\[3.2pt]
+{\normalsize
+  \href{mailto:wakim@ohsu.edu}{\faEnvelope\ wakim@ohsu.edu}
+  \quad\textbar\quad
+  \href{https://nwakim.github.io}{\faHome\ nwakim.github.io}
+  \quad\textbar\quad
+  \href{https://linkedin.com/in/nwakim}{\faLinkedin\ nwakim}
+}\\[8pt]
+\endgroup
+
+\vspace{1.6mm}
+
+% -------------------------------------------------------------------------
+% CV CONTENT
+% Each section lives in its own file under cv/ -- comment out any \input
+% line below to leave that section out, e.g. for a shorter resume variant.
+% -------------------------------------------------------------------------
+\input{cv/education.tex}
+\input{cv/research_interest.tex}
+\input{cv/Academic_positions.tex}
+\input{cv/honors.tex}
+\input{cv/writing.tex}
+\input{cv/presentation.tex}
+\input{cv/Funding.tex}
+\input{cv/Service.tex}
+\input{cv/Professional_memberships.tex}
+\input{cv/Teaching_experience.tex}
+\input{cv/Mentorship.tex}
+\input{cv/Additional_training.tex}
+```
