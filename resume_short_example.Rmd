@@ -39,9 +39,9 @@ cat("```{=latex}\n\\renewcommand{\\today}{", cv_date, "}\n```\n", sep = "")
 % -------------------------------------------------------------------------
 % EXAMPLE: a shorter resume variant that only pulls in a few sections --
 % this is the same trick your original resume_*.tex files used: point
-% \input at whichever cv/*.tex files you want for this particular version.
+% \input at whichever cv_contents/*.tex files you want for this particular version.
 % -------------------------------------------------------------------------
-\input{cv/education.tex}
-\input{cv/Academic_positions.tex}
-\input{cv/Teaching_experience.tex}
+\input{cv_contents/education.tex}
+\input{cv_contents/Academic_positions.tex}
+\input{cv_contents/Teaching_experience.tex}
 ```

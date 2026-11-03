@@ -38,19 +38,19 @@ cat("```{=latex}\n\\renewcommand{\\today}{", cv_date, "}\n```\n", sep = "")
 
 % -------------------------------------------------------------------------
 % CV CONTENT
-% Each section lives in its own file under cv/ -- comment out any \input
+% Each section lives in its own file under cv_contents/ -- comment out any \input
 % line below to leave that section out, e.g. for a shorter resume variant.
 % -------------------------------------------------------------------------
-\input{cv/education.tex}
-\input{cv/research_interest.tex}
-\input{cv/Academic_positions.tex}
-\input{cv/honors.tex}
-\input{cv/writing.tex}
-\input{cv/presentation.tex}
-\input{cv/Funding.tex}
-\input{cv/Service.tex}
-\input{cv/Professional_memberships.tex}
-\input{cv/Teaching_experience.tex}
-\input{cv/Mentorship.tex}
-\input{cv/Additional_training.tex}
+\input{cv_contents/education.tex}
+\input{cv_contents/research_interest.tex}
+\input{cv_contents/Academic_positions.tex}
+\input{cv_contents/honors.tex}
+\input{cv_contents/writing.tex}
+\input{cv_contents/presentation.tex}
+\input{cv_contents/Funding.tex}
+\input{cv_contents/Service.tex}
+\input{cv_contents/Professional_memberships.tex}
+\input{cv_contents/Teaching_experience.tex}
+\input{cv_contents/Mentorship.tex}
+\input{cv_contents/Additional_training.tex}
 ```

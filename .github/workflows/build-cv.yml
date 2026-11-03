@@ -7,7 +7,7 @@ on:
     paths:
       - "cv.Rmd"
       - "preamble.tex"
-      - "cv/**"
+      - "cv_contents/**"
       - "fonts/**"
       - ".github/workflows/build-cv.yml"
   workflow_dispatch:

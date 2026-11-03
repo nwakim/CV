@@ -2,7 +2,7 @@
 
 📄 **[Download the latest CV (PDF)](cv.pdf)**
 
-`cv.pdf` is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv/` changes on `main` — just edit a section file, commit, and push. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
+`cv.pdf` is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
 
 Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in individual section files with `\input`, so sections can be mixed and matched into different CV/resume variants.
 
@@ -15,7 +15,7 @@ cv.Rmd                   ← main CV (knit to produce cv.pdf) — pulls in every
 resume_short_example.Rmd ← example of a trimmed-down variant (Education, Experience, Teaching only)
 preamble.tex             ← LaTeX styling (fonts, icons, section rule, two-column row commands, footer)
 fonts/                   ← Roboto + FontAwesome font files
-cv/                      ← one .tex file per section — edit these directly
+cv_contents/             ← one .tex file per section — edit these directly
   education.tex
   research_interest.tex
   Academic_positions.tex
@@ -42,23 +42,23 @@ README.md                ← this file
 3. Open `cv.Rmd` in RStudio and click **Knit** (or run `rmarkdown::render("cv.Rmd")`).
 4. A `cv.pdf` will be created in the same folder.
 
-Keep `cv.Rmd`, `preamble.tex`, the `cv/` folder, and `fonts/` together — the styling, sections, and fonts won't load correctly if they're separated.
+Keep `cv.Rmd`, `preamble.tex`, the `cv_contents/` folder, and `fonts/` together — the styling, sections, and fonts won't load correctly if they're separated.
 
 ## Making a different CV/resume variant
 
-This works exactly like your old `resume_basic.tex` / `resume_Pfizer.tex` files: copy `cv.Rmd` (or `resume_short_example.Rmd`) to a new filename, then comment out or remove whichever `\input{cv/...}` lines you don't want for that version. For example, a short teaching-focused resume might only need:
+This works exactly like your old `resume_basic.tex` / `resume_Pfizer.tex` files: copy `cv.Rmd` (or `resume_short_example.Rmd`) to a new filename, then comment out or remove whichever `\input{cv_contents/...}` lines you don't want for that version. For example, a short teaching-focused resume might only need:
 
 ```
-\input{cv/education.tex}
-\input{cv/Academic_positions.tex}
-\input{cv/Teaching_experience.tex}
+\input{cv_contents/education.tex}
+\input{cv_contents/Academic_positions.tex}
+\input{cv_contents/Teaching_experience.tex}
 ```
 
 `resume_short_example.Rmd` in this folder shows exactly that — knit it to see a 2-page trimmed-down version. Every section file is self-contained, so any combination works.
 
 ## Editing a section file
 
-Each file in `cv/` is plain LaTeX using a small set of custom commands (defined in `preamble.tex`) instead of the original `awesome-cv` macros:
+Each file in `cv_contents/` is plain LaTeX using a small set of custom commands (defined in `preamble.tex`) instead of the original `awesome-cv` macros:
 
 - `\cvsection{Title}` — starts the section, with the bold heading + trailing rule.
 - `\cvsubsection{Title}` — a centered italic subheading within a section (e.g. "Active" under Grants, "Oral" under Presentations).
