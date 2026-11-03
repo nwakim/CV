@@ -4,6 +4,14 @@
 
 The CV PDF is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. Each build is saved in the `cv/` folder as `NWakim_CV_YYYY-MM-DD.pdf` (Pacific-time date), so older versions are kept; rebuilding more than once on the same day replaces that day's file, and the link above always points to the newest one. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
 
+## Editing in the Claude Doc
+
+The CV content is edited in a Claude Doc: **[Nicky Wakim — CV](https://claude.ai/artifact/2ijEWjFVbARZ3mZXW13mi8)**. It has one section per file in `cv_contents/`. Dated entries are tables, and publications and presentations are numbered lists.
+
+To publish edits, ask Claude to **sync my CV**. Claude exports the doc, runs `scripts/doc_to_tex.py` to regenerate `cv_contents/*.tex`, shows you the changes, then commits and pushes. GitHub Actions then builds the new PDF. The steps Claude follows are in [`CLAUDE.md`](CLAUDE.md).
+
+Edit the content in the doc, not the `.tex` files directly. Anything changed only in `.tex` gets overwritten by the next sync. Claude checks for such changes and asks before overwriting.
+
 Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in individual section files with `\input`, so sections can be mixed and matched into different CV/resume variants.
 
 **Note on fidelity:** this is a close visual match, not a pixel-perfect clone. It reproduces the two-column date/content layout, section headers with trailing rules, contact icons, real bullet points, and numbered publications/presentations from your original.
@@ -29,6 +37,8 @@ cv_contents/             ← one .tex file per section — edit these directly
   Teaching_experience.tex
   Mentorship.tex
   Additional_training.tex
+scripts/doc_to_tex.py    ← converts the Claude Doc (Markdown export) into cv_contents/*.tex
+CLAUDE.md                ← sync steps for Claude
 README.md                ← this file
 ```
 
@@ -58,6 +68,8 @@ This works exactly like your old `resume_basic.tex` / `resume_Pfizer.tex` files:
 `resume_short_example.Rmd` in this folder shows exactly that — knit it to see a 2-page trimmed-down version. Every section file is self-contained, so any combination works.
 
 ## Editing a section file
+
+*Normally you edit the Claude Doc instead (see above). This describes the generated `.tex` files.*
 
 Each file in `cv_contents/` is plain LaTeX using a small set of custom commands (defined in `preamble.tex`) instead of the original `awesome-cv` macros:
 
