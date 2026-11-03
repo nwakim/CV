@@ -22,10 +22,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # The footer date (\today) uses the runner's clock, which is UTC by
-      # default. Use Pacific time so the CV is dated in local (Portland) time.
-      TZ: America/Los_Angeles
     steps:
       - uses: actions/checkout@v4
 

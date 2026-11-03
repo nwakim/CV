@@ -10,6 +10,15 @@ geometry: "left=2.3cm,right=2.3cm,top=2cm,bottom=2cm,footskip=0.6cm"
 fontsize: 11pt
 ---
 
+```{r cv-date, echo=FALSE, results="asis"}
+# Date shown in the footer. Computed in R with an explicit time zone so the
+# CV is dated in Pacific time no matter where it's built (GitHub's build
+# machines run on UTC, which is a day ahead in the evening).
+cv_date <- format(Sys.time(), "%B %d, %Y", tz = "America/Los_Angeles")
+cv_date <- sub(" 0", " ", cv_date)  # "November 02" -> "November 2"
+cat("```{=latex}\n\\renewcommand{\\today}{", cv_date, "}\n```\n", sep = "")
+```
+
 ```{=latex}
 \begingroup
 \centering
