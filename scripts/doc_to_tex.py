@@ -225,7 +225,8 @@ def render_entry(renderer, row):
     if renderer == "experience":
         body = r"\textbf{%s} \newline %s" % (d["Position"], d["Organization"])
         if d["Advisors"]:
-            body += r" \newline Advisors: %s" % d["Advisors"]
+            label = "Advisors" if "," in d["Advisors"] else "Advisor"
+            body += r" \newline %s: %s" % (label, d["Advisors"])
         return r"\cvrow{%s}{%s}" % (d["Dates"], body)
     if renderer == "grants":
         body = r"\textbf{%s}" % d["Grant"]
