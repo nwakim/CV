@@ -230,9 +230,10 @@ def render_entry(renderer, row):
         return r"\cvrow{%s}{%s}" % (d["Dates"], body)
     if renderer == "grants":
         body = r"\textbf{%s}" % d["Grant"]
-        tail = " ".join(x for x in [("Role: " + d["Role"]) if d["Role"] else "", d["Description"]] if x)
-        if tail:
-            body += r" \newline " + tail
+        if d["Role"]:
+            body += r" \newline Role: " + d["Role"]
+        if d["Description"]:
+            body += r" \newline " + d["Description"]
         return r"\cvrow{%s}{%s}" % (d["Dates"], body)
     if renderer == "mentor":
         body = r"\textbf{\textmd{%s}}" % d["Mentee"]
