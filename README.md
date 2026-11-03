@@ -2,6 +2,8 @@
 
 📄 **[Download the latest CV (PDF)](cv.pdf)**
 
+`cv.pdf` is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv/` changes on `main` — just edit a section file, commit, and push. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
+
 Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in individual section files with `\input`, so sections can be mixed and matched into different CV/resume variants.
 
 **Note on fidelity:** this is a close visual match, not a pixel-perfect clone. It reproduces the two-column date/content layout, section headers with trailing rules, contact icons, real bullet points, and numbered publications/presentations from your original.
