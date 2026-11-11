@@ -48,6 +48,8 @@ sections <- c("education", "research_interest", "Academic_positions", "honors", 
               "Teaching_experience", "Mentorship", "Additional_training")
 pats <- trimws(readLines("highlights/teaching_award.txt", encoding = "UTF-8"))
 pats <- pats[pats != "" & !startsWith(pats, "#")]
+excl <- substring(pats[startsWith(pats, "!")], 2)
+pats <- pats[!startsWith(pats, "!")]
 used <- setNames(rep(FALSE, length(pats)), pats)
 out <- character()
 for (f in sections) {
@@ -57,6 +59,7 @@ for (f in sections) {
     if (!grepl("^\\\\(cvrow|cvrowtight|cveduc|item)", l)) next
     hit <- vapply(pats, function(p) grepl(p, l, fixed = TRUE), logical(1))
     if (!any(hit)) next
+    if (any(vapply(excl, function(p) grepl(p, l, fixed = TRUE), logical(1)))) next
     used[hit] <- TRUE
     lines[i] <- if (startsWith(l, "\\item "))
       paste0("\\item \\cvhlitem{", substring(l, 7), "}") else paste0("{\\cvhltrue ", l, "}")
