@@ -4,6 +4,12 @@
 
 The CV PDF is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. Each build is saved in the `cv/` folder as `NWakim_CV_YYYY-MM-DD.pdf` (Pacific-time date), so older versions are kept; rebuilding more than once on the same day replaces that day's file, and the link above always points to the newest one. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
 
+## Teaching-award CV
+
+`cv_teaching_award.Rmd` builds a separate copy of the CV for the OHSU Outstanding Teaching Award (2027 cycle), with entries about teaching, curriculum, mentoring and educational leadership highlighted. It uses the same `cv_contents/` files, so syncs from the Claude Doc reach it too. GitHub Actions saves it to `cv_teaching_award/NWakim_CV_TeachingAward_YYYY-MM-DD.pdf`, and it never replaces the main CV in `cv/`.
+
+To change what is highlighted, edit `highlights/teaching_award.txt`. Each line is a piece of text, and any CV entry containing that text is highlighted.
+
 ## Editing in the Claude Doc
 
 The CV content is edited in a Claude Doc: **[Nicky Wakim — CV](https://claude.ai/artifact/2ijEWjFVbARZ3mZXW13mi8)**. It has one section per file in `cv_contents/`. Dated entries are tables, and publications and presentations are numbered lists.
@@ -21,6 +27,7 @@ Source for my academic CV, written in R Markdown + LaTeX. A main file pulls in i
 ```
 cv/                      ← built CV PDFs, one per date: NWakim_CV_YYYY-MM-DD.pdf
 cv.Rmd                   ← main CV — pulls in every section via \input
+cv_teaching_award.Rmd    ← teaching-award copy with highlights (list in highlights/teaching_award.txt)
 resume_short_example.Rmd ← example of a trimmed-down variant (Education, Experience, Teaching only)
 preamble.tex             ← LaTeX styling (fonts, icons, section rule, two-column row commands, footer)
 fonts/                   ← Roboto + FontAwesome font files

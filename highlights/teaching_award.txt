@@ -1,0 +1,60 @@
+# Entries highlighted in cv_teaching_award.Rmd (OHSU Outstanding Teaching Award, 2027 cycle).
+# One piece of text per line; any CV entry (row or list item) whose LaTeX contains it is
+# highlighted. Matching is exact and case-sensitive. Lines starting with # are ignored.
+# A line that stops matching anything is reported as a warning in the build log.
+
+# Areas of Scholarly Interest
+trauma-informed pedagogy in statistics education
+
+# Honors and Awards
+Educator Success Grant
+Faculty of the Year
+Faculty Excellence Award in Teaching
+Transforming the Student Experience Award
+
+# Publications and Presentations (teaching and pedagogy)
+Guidelines for a more inclusive statistics and data science classroom
+Trauma-Informed Pedagogy in Statistics: Actionable Guidelines
+Trauma-informed pedagogy in biostatistics: guidelines
+Analysis of Wearable Technology Devices Data
+Data equity in biostatistics education
+Inclusive teaching in Statistics
+Inclusive teaching in biostatistics
+Empowering Educators with DEIJ Datasets
+Community-engaged research partnerships
+
+# Professional Service (education, students, programs)
+ASA Section on Statistics and Data Science Education Mentoring Committee
+American Statistical Association Oregon Chapter Treasurer
+American Statistical Association Representative for the Oregon Chapter
+SPH Catalyst Awards Reviewer
+Biostatistics Admissions Committee
+Founder of Writing Group for Early Career Faculty
+{Research Committee}
+Hiring Committee for the Biostatistics and Design Program Student Internship
+Biostatistics Curriculum Committee
+Epidemiology Curriculum Committee
+Biostatistics Comprehensive Exam Committee
+Scholarship Review Committee
+Strategic Planning Committee
+Presentation Judge, OHSU-PSU School of Public Health Student Conference
+Biostatistics Representative at Admitted Students Night
+Biostatistics Representative at Assessment Reporting Day
+Student Affairs Committee
+Faculty Senate Award Committee
+{International Conference on Teaching Statistics}
+Speed Presentation and Poster Competition
+Conference Student Paper Competition
+
+# Teaching
+Instructor on Record
+Guest Lecturer} on Missing Data
+OCTRI BERD R/Quarto Workshop
+
+# Mentorship (every entry)
+\textbf{\textmd{
+
+# Additional Training
+Foundations of Data Equity
+Data Equity Primer Workshop
+Progressive Pedagogy Workshop

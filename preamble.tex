@@ -28,6 +28,16 @@
 \usepackage{needspace}
 \usepackage{array}
 
+% ---- Optional highlighting (used by cv_teaching_award.Rmd; off in the main CV) ----
+% {\cvhltrue \cvrow{...}{...}} shades a whole row; \item \cvhlitem{...} shades a list item.
+\definecolor{cvhighlight}{HTML}{FFF0A6}
+\newif\ifcvhl
+\makeatletter
+\newcommand{\cvhlbox}[1]{\ifcvhl\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
+  {\hspace*{-1.5pt}{\setlength{\fboxsep}{1.5pt}\colorbox{cvhighlight}{#1}}\hspace*{-1.5pt}}{#1}}
+\makeatother
+\newcommand{\cvhlitem}[1]{\hspace*{-1.5pt}{\setlength{\fboxsep}{1.5pt}\colorbox{cvhighlight}{\parbox[t]{\dimexpr\linewidth-3pt\relax}{#1}}}}
+
 % ---- Two-column "date | content" row, matching the original CV's entry layout ----
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
@@ -36,9 +46,9 @@
 \newcommand{\cvrow}[2]{%
   \needspace{2\baselineskip}%
   \noindent\setlength\tabcolsep{0pt}%
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{2.6cm} L{\dimexpr\linewidth-2.6cm-1.4cm\relax}}
+  \cvhlbox{\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{2.6cm} L{\dimexpr\linewidth-2.6cm-1.4cm\relax}}
   {\color{black} #1} & #2 \\
-  \end{tabular*}\par
+  \end{tabular*}}\par
   \vspace{4pt}%
 }
 
@@ -47,9 +57,9 @@
 \newcommand{\cvrowtight}[2]{%
   \needspace{1\baselineskip}%
   \noindent\setlength\tabcolsep{0pt}%
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{2.6cm} L{\dimexpr\linewidth-2.6cm-1.4cm\relax}}
+  \cvhlbox{\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{2.6cm} L{\dimexpr\linewidth-2.6cm-1.4cm\relax}}
   {\color{black} #1} & #2 \\
-  \end{tabular*}\par
+  \end{tabular*}}\par
   \vspace{-2pt}%
 }
 
@@ -58,10 +68,10 @@
 \newcommand{\cveduc}[4]{%
   \needspace{2\baselineskip}%
   \noindent\setlength\tabcolsep{0pt}%
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{\dimexpr\linewidth-4.6cm\relax} R{4.6cm}}
+  \cvhlbox{\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}} L{\dimexpr\linewidth-4.6cm\relax} R{4.6cm}}
   \textbf{#2} & {\color{black} #3} \\
   #1 & {\color{black} #4} \\
-  \end{tabular*}\par
+  \end{tabular*}}\par
   \vspace{7.2pt}%
 }
 

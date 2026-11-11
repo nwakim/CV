@@ -1,12 +1,15 @@
 name: Build CV PDF
 
 # Rebuild the CV whenever its source changes and commit it back as
-# cv/NWakim_CV_YYYY-MM-DD.pdf (one file per day; same-day rebuilds overwrite it).
+# cv/NWakim_CV_YYYY-MM-DD.pdf (one file per day; same-day rebuilds overwrite it). Also builds the
+# teaching-award variant into cv_teaching_award/NWakim_CV_TeachingAward_YYYY-MM-DD.pdf.
 on:
   push:
     branches: [main]
     paths:
       - "cv.Rmd"
+      - "cv_teaching_award.Rmd"
+      - "highlights/**"
       - "preamble.tex"
       - "cv_contents/**"
       - "fonts/**"
@@ -56,14 +59,20 @@ jobs:
           sed -i -E "s#\]\((cv\.pdf|cv/NWakim_CV_[0-9-]+\.pdf)\)#](cv/$name)#" README.md
           echo "CV_NAME=$name" >> "$GITHUB_ENV"
 
+      - name: Render teaching-award CV
+        run: |
+          Rscript -e 'rmarkdown::render("cv_teaching_award.Rmd")'
+          mkdir -p cv_teaching_award
+          mv cv_teaching_award.pdf "cv_teaching_award/NWakim_CV_TeachingAward_$(TZ=America/Los_Angeles date +%F).pdf"
+
       - name: Commit updated CV
         run: |
-          if [ -z "$(git status --porcelain -- cv README.md)" ]; then
+          if [ -z "$(git status --porcelain -- cv cv_teaching_award README.md)" ]; then
             echo "CV unchanged"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add cv README.md
+          git add cv cv_teaching_award README.md
           git commit -m "Add $CV_NAME"
           git push

@@ -26,3 +26,4 @@ resume_short_example.tex
 # Local knits (dated copies in cv/ are built by GitHub Actions)
 /cv.pdf
 /resume_short_example.pdf
+/cv_teaching_award.pdf

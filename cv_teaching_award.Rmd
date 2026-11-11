@@ -1,0 +1,69 @@
+---
+title: ""
+output:
+  pdf_document:
+    latex_engine: xelatex
+    keep_tex: false
+    includes:
+      in_header: preamble.tex
+geometry: "left=2.3cm,right=2.3cm,top=2cm,bottom=2cm,footskip=0.6cm"
+fontsize: 11pt
+---
+
+```{r cv-date, echo=FALSE, results="asis"}
+# Date shown in the footer. Computed in R with an explicit time zone so the
+# CV is dated in Pacific time no matter where it's built (GitHub's build
+# machines run on UTC, which is a day ahead in the evening).
+cv_date <- format(Sys.time(), "%B %d, %Y", tz = "America/Los_Angeles")
+cv_date <- sub(" 0", " ", cv_date)  # "November 02" -> "November 2"
+cat("```{=latex}\n\\renewcommand{\\today}{", cv_date, "}\n```\n", sep = "")
+```
+
+```{=latex}
+\begingroup
+\centering
+{\Huge Nicole (Nicky) I. \textbf{Wakim}}\\[3.2pt]
+{\large Assistant Professor of Biostatistics \enskip $\cdot$ \enskip Oregon Health \& Science University}\\[1.6pt]
+{\normalsize\itshape 1810 SW 5th Ave, Portland, OR 97201}\\[3.2pt]
+{\normalsize
+  \href{mailto:wakim@ohsu.edu}{\faEnvelope\ wakim@ohsu.edu}
+  \quad\textbar\quad
+  \href{https://nwakim.github.io}{\faHome\ nwakim.github.io}
+  \quad\textbar\quad
+  \href{https://linkedin.com/in/nwakim}{\faLinkedin\ nwakim}
+}\\[8pt]
+\endgroup
+
+\vspace{1.6mm}
+
+{\small\itshape \colorbox{cvhighlight}{Highlighted} entries relate to teaching, curriculum, mentoring and educational leadership.}\par
+\vspace{1.6mm}
+```
+
+```{r sections, echo=FALSE, results="asis"}
+# Teaching-award variant of cv.Rmd: same sections from cv_contents/, with the entries listed
+# in highlights/teaching_award.txt shaded. Edit that list to change what is highlighted.
+sections <- c("education", "research_interest", "Academic_positions", "honors", "writing",
+              "presentation", "Funding", "Service", "Professional_memberships",
+              "Teaching_experience", "Mentorship", "Additional_training")
+pats <- trimws(readLines("highlights/teaching_award.txt", encoding = "UTF-8"))
+pats <- pats[pats != "" & !startsWith(pats, "#")]
+used <- setNames(rep(FALSE, length(pats)), pats)
+out <- character()
+for (f in sections) {
+  lines <- readLines(file.path("cv_contents", paste0(f, ".tex")), encoding = "UTF-8")
+  for (i in seq_along(lines)) {
+    l <- lines[i]
+    if (!grepl("^\\\\(cvrow|cvrowtight|cveduc|item)", l)) next
+    hit <- vapply(pats, function(p) grepl(p, l, fixed = TRUE), logical(1))
+    if (!any(hit)) next
+    used[hit] <- TRUE
+    lines[i] <- if (startsWith(l, "\\item "))
+      paste0("\\item \\cvhlitem{", substring(l, 7), "}") else paste0("{\\cvhltrue ", l, "}")
+  }
+  out <- c(out, lines, "")
+}
+if (!all(used)) warning("Highlight entries that match nothing in the CV: ",
+                        paste(names(used)[!used], collapse = " | "))
+cat("```{=latex}\n", paste(out, collapse = "\n"), "\n```\n", sep = "")
+```
