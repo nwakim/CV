@@ -34,7 +34,7 @@
 \newif\ifcvhl
 \makeatletter
 \newcommand{\cvhlbox}[1]{\ifcvhl\expandafter\@firstoftwo\else\expandafter\@secondoftwo\fi
-  {\hspace*{-1.5pt}{\setlength{\fboxsep}{1.5pt}\colorbox{cvhighlight}{#1}}\hspace*{-1.5pt}}{#1}}
+  {\hspace*{-1.5pt}{\setlength{\fboxsep}{0pt}\colorbox{cvhighlight}{\hspace{1.5pt}#1\hspace{1.5pt}}}\hspace*{-1.5pt}}{#1}}
 \makeatother
 \newcommand{\cvhlitem}[1]{\hspace*{-1.5pt}{\setlength{\fboxsep}{1.5pt}\colorbox{cvhighlight}{\parbox[t]{\dimexpr\linewidth-3pt\relax}{#1}}}}
 

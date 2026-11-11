@@ -28,7 +28,7 @@ ASA Section on Statistics and Data Science Education Mentoring Committee
 American Statistical Association Oregon Chapter Treasurer
 American Statistical Association Representative for the Oregon Chapter
 SPH Catalyst Awards Reviewer
-Biostatistics Admissions Committee
+{Biostatistics Admissions Committee}
 Founder of Writing Group for Early Career Faculty
 {Research Committee}
 Hiring Committee for the Biostatistics and Design Program Student Internship
