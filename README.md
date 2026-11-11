@@ -1,6 +1,6 @@
 # Nicole (Nicky) I. Wakim — CV
 
-📄 **[Download the latest CV (PDF)](cv/NWakim_CV_2026-11-02.pdf)** · [All versions](cv/)
+📄 **[Download the latest CV (PDF)](cv/NWakim_CV_2026-11-11.pdf)** · [All versions](cv/)
 
 The CV PDF is rebuilt automatically by GitHub Actions (`.github/workflows/build-cv.yml`) whenever `cv.Rmd`, `preamble.tex`, `fonts/`, or anything in `cv_contents/` changes on `main` — just edit a section file, commit, and push. Each build is saved in the `cv/` folder as `NWakim_CV_YYYY-MM-DD.pdf` (Pacific-time date), so older versions are kept; rebuilding more than once on the same day replaces that day's file, and the link above always points to the newest one. You can also trigger a rebuild by hand from the repo's **Actions** tab → *Build CV PDF* → *Run workflow*.
 
